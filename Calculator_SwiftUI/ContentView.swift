@@ -213,3 +213,5 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 //deneme
+//class deneme
+
