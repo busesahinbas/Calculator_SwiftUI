@@ -11,6 +11,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            Spacer()
             VStack {
                 Spacer()
                 Text("0")
@@ -54,8 +55,8 @@ struct ContentView: View {
                  .clipShape(Circle())
                  .font(.system(size: 32))
                 
-            }.frame(height: Constants.heightFrame)
-                .padding(6)
+            }
+                //.padding(6)
 
         
             HStack {
@@ -91,8 +92,8 @@ struct ContentView: View {
                  .font(.system(size: 32))
                  .clipShape(Circle())
 
-            }.frame(height: Constants.heightFrame)
-                .padding(6)
+            }
+                //.padding(6)
 
             
             HStack {
@@ -128,8 +129,8 @@ struct ContentView: View {
                  .font(.system(size: 32))
                  .clipShape(Circle())
 
-            }.frame(height: Constants.heightFrame)
-                .padding(6)
+            }
+                //.padding(6)
 
            
             HStack {
@@ -165,8 +166,8 @@ struct ContentView: View {
                  .font(.system(size: 32))
                  .clipShape(Circle())
 
-            }.frame(height: Constants.heightFrame)
-                .padding(Constants.buttonPadding)
+            }
+                //.padding(Constants.buttonPadding)
 
           
             HStack (){
@@ -197,10 +198,14 @@ struct ContentView: View {
                  .font(.system(size: 32))
                  .clipShape(Circle())
 
-            }.frame(height: Constants.heightFrame)
-                .padding(.bottom, Constants.buttonPadding)
+            }
+                //.padding(.bottom, Constants.buttonPadding)
         
-        }.background(Color.black)
+        } //.padding(.bottom, Constants.buttonPadding)
+        .padding(.bottom, 60)
+        .background(Color.black)
+           
+        
     }
    
 }
@@ -212,6 +217,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-//deneme
-//class deneme
-//deneme
+
