@@ -9,6 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     
+    let stack1Array = ["AC", "+/-", "%", "÷"]
+    let stack2Array = [ "7", "8", "9", "x"]
+    let stack3Array = ["4", "5", "6", "-"]
+    let stack4Array = ["1", "2", "3", "+"]
+    let stack5Array = ["0", ",", "="]
+    @State var testColor = Color.white
+    @State var index = 0
+
+    
     var body: some View {
         VStack {
             Spacer()
@@ -22,186 +31,82 @@ struct ContentView: View {
             }.frame(height: Constants.heightText)
             
             HStack {
-                Button("AC") {
-                    print("Button tapped!")
+                ForEach (0..<stack1Array.count) { i in
+                
+                    Button(stack1Array[i]) {
+                        print("Button Tapped!")
+                    }
+                    .frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
+                    .foregroundColor(testColor)
+                    .background(i == 3 ? Color.orange : Constants.lightGrey)
+                    .clipShape(Circle())
+                    .font(.system(size: 32))
                 }
-                .frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
-                    .foregroundColor(Color.white)
-                    .background(Constants.lightGrey)
-                    .clipShape(Circle())
-                    .font(.system(size: 32))
-                
-                Button("+/-") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
-                    .foregroundColor(Color.white)
-                    .background(Constants.lightGrey)
-                    .clipShape(Circle())
-                    .font(.system(size: 32))
-                
-                Button("%") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
-                    .foregroundColor(Color.white)
-                    .background(Constants.lightGrey)
-                    .clipShape(Circle())
-                    .font(.system(size: 32))
-
-                Button("÷") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
-                 .foregroundColor(Color.white)
-                 .background(Color.orange)
-                 .clipShape(Circle())
-                 .font(.system(size: 32))
-                
             }
                 //.padding(6)
 
         
             HStack {
-                Button("7") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
+                ForEach (0..<stack2Array.count) { i in
+                    Button(stack2Array[i]) {
+                        print("Button Tapped!")
+                    }
+                    .frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
                     .foregroundColor(Color.white)
-                    .background(Constants.darkGrey)
-                    .font(.system(size: 32))
+                    .background(i == 3 ? Color.orange : Constants.darkGrey)
                     .clipShape(Circle())
-                
-                Button("8") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
-                    .foregroundColor(Color.white)
-                    .background(Constants.darkGrey)
                     .font(.system(size: 32))
-                    .clipShape(Circle())
-                
-                Button("9") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
-                    .foregroundColor(Color.white)
-                    .background(Constants.darkGrey)
-                    .font(.system(size: 32))
-                    .clipShape(Circle())
-                
-                Button("x") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
-                 .foregroundColor(Color.white)
-                 .background(Color.orange)
-                 .font(.system(size: 32))
-                 .clipShape(Circle())
-
+                }
             }
                 //.padding(6)
 
             
             HStack {
-                Button("4") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
+                ForEach (0..<stack3Array.count) { i in
+                    Button(stack3Array[i]) {
+                        print("Button Tapped!")
+                    }
+                    .frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
                     .foregroundColor(Color.white)
-                    .background(Constants.darkGrey)
-                    .font(.system(size: 32))
+                    .background(i == 3 ? Color.orange : Constants.darkGrey)
                     .clipShape(Circle())
-                
-                Button("5") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
-                    .foregroundColor(Color.white)
-                    .background(Constants.darkGrey)
                     .font(.system(size: 32))
-                    .clipShape(Circle())
-                
-                Button("6") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
-                    .foregroundColor(Color.white)
-                    .background(Constants.darkGrey)
-                    .font(.system(size: 32))
-                    .clipShape(Circle())
-                
-                Button("-") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
-                 .foregroundColor(Color.white)
-                 .background(Color.orange)
-                 .font(.system(size: 32))
-                 .clipShape(Circle())
-
+                }
             }
                 //.padding(6)
 
            
             HStack {
-                Button("1") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
+                ForEach (0..<stack4Array.count) { i in
+                    Button(stack4Array[i]) {
+                        print("Button Tapped!")
+                    }
+                    .frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
                     .foregroundColor(Color.white)
-                    .background(Constants.darkGrey)
-                    .font(.system(size: 32))
+                    .background(i == 3 ? Color.orange : Constants.darkGrey)
                     .clipShape(Circle())
-                
-                Button("2") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
-                    .foregroundColor(Color.white)
-                    .background(Constants.darkGrey)
                     .font(.system(size: 32))
-                    .clipShape(Circle())
-                
-                Button("3") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
-                    .foregroundColor(Color.white)
-                    .background(Constants.darkGrey)
-                    .font(.system(size: 32))
-                    .clipShape(Circle())
-                
-                Button("+") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
-                 .foregroundColor(Color.white)
-                 .background(Color.orange)
-                 .font(.system(size: 32))
-                 .clipShape(Circle())
-
+                }
             }
                 //.padding(Constants.buttonPadding)
 
           
             HStack (){
-                Button() {
-                    print("Button tapped!")
-                }label: {
-                    Text("0").padding(30)
-                }.frame(width: Constants.largeButtonWidht, height: Constants.heightButton, alignment:Alignment.leading)
+                ForEach (0..<stack5Array.count) { i in
+                    Button() {
+                        print("Button Tapped!")
+                    }label: {
+                        Text(stack5Array[i]).padding(i == 0 ? (UIScreen.main.bounds.size.width / 10) :  Constants.smallButtonWidht / 2.5)
+                    }
+                    .frame(width: i == 0 ? Constants.largeButtonWidht : Constants.smallButtonWidht, height: Constants.heightButton, alignment: .leading)
                     .foregroundColor(Color.white)
-                    .background(Constants.darkGrey)
-                    .font(.system(size: 32))
+                    .background(i == 2 ? Color.orange : Constants.darkGrey)
                     .clipShape(Capsule())
-                    //.cornerRadius((UIScreen.main.bounds.size.width - (4*12)) / 2)
-                    
-                Button(",") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
-                    .foregroundColor(Color.white)
-                    .background(Constants.darkGrey)
                     .font(.system(size: 32))
-                    .clipShape(Circle())
-                
-                Button("=") {
-                    print("Button tapped!")
-                }.frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
-                 .foregroundColor(Color.white)
-                 .background(Color.orange)
-                 .font(.system(size: 32))
-                 .clipShape(Circle())
-
+                }
             }
-                //.padding(.bottom, Constants.buttonPadding)
         
-        } //.padding(.bottom, Constants.buttonPadding)
+        }
         .padding(.bottom, 60)
         .background(Color.black)
            
