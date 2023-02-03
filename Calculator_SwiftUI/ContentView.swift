@@ -10,16 +10,15 @@ import SwiftUI
 struct ContentView: View {
     
     @State var resultText = "0"
-    @State var result = 0
-    @State var doubleResult : Double = 0.0
-    @State var number1 = 0
+    @State var result : Double = 0.0
+    @State var number1 : Double = 0.0
     @State var currentOperation: Operations = .none
     
-    let stack1 : [[String : Any]] = [["name": "AC", "color": Constants.lightGrey, "width": Constants.smallButtonWidht, "textColor": Color.black],
+     let stack1 : [[String : Any]] = [["name": "AC", "color": Constants.lightGrey, "width": Constants.smallButtonWidht, "textColor": Color.black],
                                      ["name": "+/-", "color": Constants.lightGrey, "width": Constants.smallButtonWidht, "textColor": Color.black],
                                      ["name": "%", "color": Constants.lightGrey, "width": Constants.smallButtonWidht, "textColor": Color.black],
                                      ["name": "÷", "color": Color.orange, "width": Constants.smallButtonWidht, "textColor": Color.white]]
-    
+     
     let stack1Array = ["AC", "+/-", "%", "÷"]
     let stack2Array = [ "7", "8", "9", "x"]
     let stack3Array = ["4", "5", "6", "-"]
@@ -29,12 +28,12 @@ struct ContentView: View {
     func numbers(button : String){
         
         if (result == 0) {
-            result = Int(button) ?? 0
-            resultText = String(result)
+            result = Double(button) ?? 0
+            resultText = String(Int(result)).removeAfterPointIfZero()
         }else{
-            var result2 = String(result) + button
-            result = Int(result2)!
-            resultText = String(result)
+            var result2 = String(Int(result)) + button
+            result = Double(result2)!
+            resultText = String(result).removeAfterPointIfZero()
         }
     }
     
@@ -60,22 +59,24 @@ struct ContentView: View {
             case .add: self.result = number1 + result
             case .subtract: self.result = number1 - result
             case .multiply: self.result = number1 * result
-            case .divide: self.doubleResult = Double(number1) / Double(result)
+            case .divide: self.result = number1 / result
             case .none:
                 break
             }
-            resultText = String(format:"%3f",doubleResult)
+            resultText = String(format:"%g",result).removeAfterPointIfZero()
+            number1 = 0
+            result = 0
+            currentOperation = .none
         }else if(button == "AC"){
             result = 0
             number1 = 0
             resultText = "0"
         }else if(button == "+/-"){
-            result = Int(resultText)! * -1
+            result = Double(resultText)! * -1
             resultText = String(result)
         }else if(button == "%"){
-            doubleResult = Double(resultText)! / 100.0
-            resultText = String(format:"%3f",doubleResult)
-            
+            result = Double(resultText)! / 100.0
+            resultText = String(format:"%g",result)
             
         }
     }

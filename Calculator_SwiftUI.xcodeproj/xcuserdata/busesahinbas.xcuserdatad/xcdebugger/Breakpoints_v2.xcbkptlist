@@ -7,15 +7,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "ACD27440-BC50-4E20-AF32-3967BEB8576E"
+            uuid = "FE22C252-97E1-4407-86AB-60EC95961ECC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Calculator_SwiftUI/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "calculateOperations(button:)"
             landmarkType = "7">
          </BreakpointContent>
