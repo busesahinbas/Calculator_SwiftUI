@@ -11,6 +11,7 @@ struct ContentView: View {
     
     @State var resultText = "0"
     @State var result = 0
+    @State var doubleResult : Double = 0.0
     @State var number1 = 0
     @State var currentOperation: Operations = .none
     
@@ -59,11 +60,11 @@ struct ContentView: View {
             case .add: self.result = number1 + result
             case .subtract: self.result = number1 - result
             case .multiply: self.result = number1 * result
-            case .divide: self.result = number1 / result
+            case .divide: self.doubleResult = Double(number1) / Double(result)
             case .none:
                 break
             }
-            resultText = String(result)
+            resultText = String(format:"%3f",doubleResult)
         }else if(button == "AC"){
             result = 0
             number1 = 0
@@ -72,8 +73,9 @@ struct ContentView: View {
             result = Int(resultText)! * -1
             resultText = String(result)
         }else if(button == "%"){
-            result = Int(resultText)! / 100
-            resultText = String(result)
+            doubleResult = Double(resultText)! / 100.0
+            resultText = String(format:"%3f",doubleResult)
+            
             
         }
     }

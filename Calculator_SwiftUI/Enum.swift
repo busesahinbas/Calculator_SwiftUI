@@ -14,9 +14,3 @@ enum Operations {
     case divide
     case none
 }
-
-enum Others {
-    case ac
-    case sign
-    case percent
-}
