@@ -35,8 +35,8 @@ struct ContentView: View {
     }
     
     func comma (){
-        if (!resultText.contains(".")){
-            resultText += "."
+        if (!resultText.contains(",")){
+            resultText += ","
         }
     }
     
@@ -56,19 +56,19 @@ struct ContentView: View {
     
     func calculate(button : String){
         if(button == "÷"){
-            number1 = Double(resultText)!
+            number1 = Double(resultText.editDot())!
             currentOperation = .divide
             result = 0
         }else if(button == "x"){
-            number1 = Double(resultText)!
+            number1 = Double(resultText.editDot())!
             currentOperation = .multiply
             result = 0
         }else if(button == "-"){
-            number1 = Double(resultText)!
+            number1 = Double(resultText.editDot())!
             currentOperation = .subtract
             result = 0
         }else if(button == "+"){
-            number1 = Double(resultText)!
+            number1 = Double(resultText.editDot())!
             currentOperation = .add
             result = 0
         }else if(button == "="){
@@ -77,10 +77,9 @@ struct ContentView: View {
             case .subtract: self.result = number1 - result
             case .multiply: self.result = number1 * result
             case .divide: self.result = number1 / result
-            case .none:
-                break
+            case .none: self.result = 0
             }
-            resultText = String(format:"%g",result).removeAfterPointIfZero()
+            resultText = String(format:"%g",result).removeAfterPointIfZero().editComma()
             number1 = 0
             result = 0
             currentOperation = .none

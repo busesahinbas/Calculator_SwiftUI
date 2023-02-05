@@ -24,8 +24,13 @@ public extension String {
        return self
    }
     
-    func addComma() -> String {
+    func editComma() -> String {
         let num = self.replacingOccurrences(of: ".", with: ",")
+        return num
+    }
+    
+    func editDot() -> String {
+        let num = self.replacingOccurrences(of: ",", with: ".")
         return num
     }
 }
