@@ -46,11 +46,11 @@ struct ContentView: View {
             number1 = 0
             resultText = "0"
         }else if(button == "+/-"){
-            result = Double(resultText)! * -1
-            resultText = String(result).removeAfterPointIfZero()
+            result = Double(resultText.editDot())! * -1
+            resultText = String(result).removeAfterPointIfZero().editComma()
         }else if(button == "%"){
-            result = Double(resultText)! / 100.0
-            resultText = String(format:"%g",result)
+            result = Double(resultText.editDot())! / 100.0
+            resultText = String(format:"%g",result).editComma()
         }
     }
     
@@ -77,7 +77,7 @@ struct ContentView: View {
             case .subtract: self.result = number1 - result
             case .multiply: self.result = number1 * result
             case .divide: self.result = number1 / result
-            case .none: self.result = 0
+            case .none: self.resultText = "0"
             }
             resultText = String(format:"%g",result).removeAfterPointIfZero().editComma()
             number1 = 0
