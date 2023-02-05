@@ -61,9 +61,9 @@
 				4D9884CD294DF38B0065DD4F /* ContentView.swift */,
 				4DF7C59E29642D9D0078766F /* Contants.swift */,
 				4D3771942980645700E9DDA1 /* Enum.swift */,
+				4D562BDC298D9DEF008DFE4C /* Extensions.swift */,
 				4D9884CF294DF38C0065DD4F /* Assets.xcassets */,
 				4D9884D1294DF38C0065DD4F /* Preview Content */,
-				4D562BDC298D9DEF008DFE4C /* Extensions.swift */,
 			);
 			path = Calculator_SwiftUI;
 			sourceTree = "<group>";

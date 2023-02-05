@@ -14,11 +14,11 @@ struct ContentView: View {
     @State var number1 : Double = 0.0
     @State var currentOperation: Operations = .none
     
-     let stack1 : [[String : Any]] = [["name": "AC", "color": Constants.lightGrey, "width": Constants.smallButtonWidht, "textColor": Color.black],
+    let stack1 : [[String : Any]] = [["name": "AC", "color": Constants.lightGrey, "width": Constants.smallButtonWidht, "textColor": Color.black],
                                      ["name": "+/-", "color": Constants.lightGrey, "width": Constants.smallButtonWidht, "textColor": Color.black],
                                      ["name": "%", "color": Constants.lightGrey, "width": Constants.smallButtonWidht, "textColor": Color.black],
                                      ["name": "÷", "color": Color.orange, "width": Constants.smallButtonWidht, "textColor": Color.white]]
-     
+    
     let stack1Array = ["AC", "+/-", "%", "÷"]
     let stack2Array = [ "7", "8", "9", "x"]
     let stack3Array = ["4", "5", "6", "-"]
@@ -26,32 +26,49 @@ struct ContentView: View {
     let stack5Array = ["0", ",", "="]
     
     func numbers(button : String){
-        
-        if (result == 0) {
-            result = Double(button) ?? 0
-            resultText = String(Int(result)).removeAfterPointIfZero()
+        if (resultText == "0" || result == 0) {
+            resultText = button
+            result = Double(resultText) ?? 0
         }else{
-            var result2 = String(Int(result)) + button
-            result = Double(result2)!
-            resultText = String(result).removeAfterPointIfZero()
+            resultText = resultText + button
         }
     }
     
-    func calculateOperations(button : String){
+    func comma (){
+        if (!resultText.contains(".")){
+            resultText += "."
+        }
+    }
+    
+    func operations(button : String) {
+        if(button == "AC"){
+            result = 0
+            number1 = 0
+            resultText = "0"
+        }else if(button == "+/-"){
+            result = Double(resultText)! * -1
+            resultText = String(result).removeAfterPointIfZero()
+        }else if(button == "%"){
+            result = Double(resultText)! / 100.0
+            resultText = String(format:"%g",result)
+        }
+    }
+    
+    func calculate(button : String){
         if(button == "÷"){
-            number1 = result
+            number1 = Double(resultText)!
             currentOperation = .divide
             result = 0
         }else if(button == "x"){
-            number1 = result
+            number1 = Double(resultText)!
             currentOperation = .multiply
             result = 0
         }else if(button == "-"){
-            number1 = result
+            number1 = Double(resultText)!
             currentOperation = .subtract
             result = 0
         }else if(button == "+"){
-            number1 = result
+            number1 = Double(resultText)!
             currentOperation = .add
             result = 0
         }else if(button == "="){
@@ -67,18 +84,8 @@ struct ContentView: View {
             number1 = 0
             result = 0
             currentOperation = .none
-        }else if(button == "AC"){
-            result = 0
-            number1 = 0
-            resultText = "0"
-        }else if(button == "+/-"){
-            result = Double(resultText)! * -1
-            resultText = String(result)
-        }else if(button == "%"){
-            result = Double(resultText)! / 100.0
-            resultText = String(format:"%g",result)
-            
         }
+        
     }
     
     var body: some View {
@@ -94,10 +101,10 @@ struct ContentView: View {
             }.frame(height: Constants.heightText)
             
             HStack {
-                ForEach (0..<stack1Array.count) { i in
+                ForEach (0..<stack1Array.count, id: \.self) { i in
                     
                     Button(stack1Array[i])  {
-                        calculateOperations(button: stack1Array[i])
+                        i == 3 ? calculate(button: stack1Array[i]) : operations(button: stack1Array[i])
                     }
                     .frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
                     .foregroundColor((stack1[i]["textColor"] as? Color) ?? Color.white)
@@ -108,9 +115,9 @@ struct ContentView: View {
             }
             
             HStack {
-                ForEach (0..<stack2Array.count) { i in
+                ForEach (0..<stack2Array.count, id: \.self) { i in
                     Button(stack2Array[i]) {
-                        i == 3 ? calculateOperations(button: stack2Array[i]) : numbers(button: stack2Array[i])
+                        i == 3 ? calculate(button: stack2Array[i]) : numbers(button: stack2Array[i])
                     }
                     .frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
                     .foregroundColor(Color.white)
@@ -121,9 +128,9 @@ struct ContentView: View {
             }
             
             HStack {
-                ForEach (0..<stack3Array.count) { i in
+                ForEach (0..<stack3Array.count, id: \.self) { i in
                     Button(stack3Array[i]) {
-                        i == 3 ? calculateOperations(button: stack3Array[i]) : numbers(button: stack3Array[i])
+                        i == 3 ? calculate(button: stack3Array[i]) : numbers(button: stack3Array[i])
                     }
                     .frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
                     .foregroundColor(Color.white)
@@ -134,9 +141,9 @@ struct ContentView: View {
             }
             
             HStack {
-                ForEach (0..<stack4Array.count) { i in
+                ForEach (0..<stack4Array.count, id: \.self) { i in
                     Button(stack4Array[i]) {
-                        i == 3 ? calculateOperations(button: stack4Array[i]) : numbers(button: stack4Array[i])
+                        i == 3 ? calculate(button: stack4Array[i]) : numbers(button: stack4Array[i])
                     }
                     .frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
                     .foregroundColor(Color.white)
@@ -147,9 +154,17 @@ struct ContentView: View {
             }
             
             HStack (){
-                ForEach (0..<stack5Array.count) { i in
+                ForEach (0..<stack5Array.count, id: \.self) { i in
                     Button() {
-                        i == 2 ? calculateOperations(button: stack5Array[i]) : numbers(button: stack5Array[i])
+                        //i == 2 ? calculate(button: stack5Array[i]) : numbers(button: stack5Array[i])
+                        
+                        if(i==0){
+                            numbers(button: stack5Array[i])
+                        }else if (i==1){
+                            comma()
+                        }else{
+                            calculate(button: stack5Array[i])
+                        }
                     }label: {
                         Text(stack5Array[i]).padding(i == 0 ? (UIScreen.main.bounds.size.width / 10) :  Constants.smallButtonWidht / 2.5)
                     }
@@ -168,10 +183,8 @@ struct ContentView: View {
     
 }
 
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        //ContentView().previewDevice("iPhone SE (2nd generation)")
         ContentView()
     }
 }

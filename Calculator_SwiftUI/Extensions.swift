@@ -23,4 +23,9 @@ public extension String {
        }
        return self
    }
+    
+    func addComma() -> String {
+        let num = self.replacingOccurrences(of: ".", with: ",")
+        return num
+    }
 }
