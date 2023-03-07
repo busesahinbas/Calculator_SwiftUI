@@ -14,9 +14,9 @@ struct ContentView: View {
     @State var number1 : Double = 0.0
     @State var currentOperation: Operations = .none
     
-    let stack1 : [[String : Any]] = [["name": "AC", "color": Constants.lightGrey, "width": Constants.smallButtonWidht, "textColor": Color.black],
-                                     ["name": "+/-", "color": Constants.lightGrey, "width": Constants.smallButtonWidht, "textColor": Color.black],
-                                     ["name": "%", "color": Constants.lightGrey, "width": Constants.smallButtonWidht, "textColor": Color.black],
+    let stack1 : [[String : Any]] = [["name": "AC", "color": Color.appColor(.ligtGrey) ?? Color.gray, "width": Constants.smallButtonWidht, "textColor": Color.black],
+                                     ["name": "+/-", "color": Color.appColor(.ligtGrey) ?? Color.gray, "width": Constants.smallButtonWidht, "textColor": Color.black],
+                                     ["name": "%", "color": Color.appColor(.ligtGrey) ?? Color.gray, "width": Constants.smallButtonWidht, "textColor": Color.black],
                                      ["name": "÷", "color": Color.orange, "width": Constants.smallButtonWidht, "textColor": Color.white]]
     
     let stack1Array = ["AC", "+/-", "%", "÷"]
@@ -28,9 +28,10 @@ struct ContentView: View {
     func numbers(button : String){
         if (resultText == "0" || result == 0) {
             resultText = button
-            result = Double(resultText) ?? 0
+            result = Double(resultText.editDot()) ?? 0
         }else{
             resultText = resultText + button
+            result = Double(resultText.editDot()) ?? 0
         }
     }
     
@@ -120,7 +121,7 @@ struct ContentView: View {
                     }
                     .frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
                     .foregroundColor(Color.white)
-                    .background(i == 3 ? Color.orange : Constants.darkGrey)
+                    .background(i == 3 ? Color.orange : Color.appColor(.darkGrey) ?? Color.gray)
                     .clipShape(Circle())
                     .font(.system(size: 32))
                 }
@@ -133,7 +134,7 @@ struct ContentView: View {
                     }
                     .frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
                     .foregroundColor(Color.white)
-                    .background(i == 3 ? Color.orange : Constants.darkGrey)
+                    .background(i == 3 ? Color.orange : Color.appColor(.darkGrey) ?? Color.gray)
                     .clipShape(Circle())
                     .font(.system(size: 32))
                 }
@@ -146,7 +147,7 @@ struct ContentView: View {
                     }
                     .frame(width: Constants.smallButtonWidht, height: Constants.heightButton)
                     .foregroundColor(Color.white)
-                    .background(i == 3 ? Color.orange : Constants.darkGrey)
+                    .background(i == 3 ? Color.orange : Color.appColor(.darkGrey) ?? Color.gray)
                     .clipShape(Circle())
                     .font(.system(size: 32))
                 }
@@ -169,7 +170,7 @@ struct ContentView: View {
                     }
                     .frame(width: i == 0 ? Constants.largeButtonWidht : Constants.smallButtonWidht, height: Constants.heightButton, alignment: .leading)
                     .foregroundColor(Color.white)
-                    .background(i == 2 ? Color.orange : Constants.darkGrey)
+                    .background(i == 2 ? Color.orange : Color.appColor(.darkGrey) ?? Color.gray)
                     .clipShape(Capsule())
                     .font(.system(size: 32))
                 }

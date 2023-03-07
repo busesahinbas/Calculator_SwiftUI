@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 public extension String {
    
@@ -32,5 +33,16 @@ public extension String {
     func editDot() -> String {
         let num = self.replacingOccurrences(of: ",", with: ".")
         return num
+    }
+}
+
+extension Color {
+    static func appColor(_ name: AssetsColor) -> Color? {
+        switch name {
+        case .darkGrey:
+            return Color("darkGrey")
+        case .ligtGrey:
+            return Color("lightGrey")
+        }
     }
 }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D3771952980645700E9DDA1 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3771942980645700E9DDA1 /* Enum.swift */; };
+		4D3771952980645700E9DDA1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3771942980645700E9DDA1 /* Enums.swift */; };
 		4D562BDD298D9DEF008DFE4C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D562BDC298D9DEF008DFE4C /* Extensions.swift */; };
 		4D9884CC294DF38B0065DD4F /* Calculator_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9884CB294DF38B0065DD4F /* Calculator_SwiftUIApp.swift */; };
 		4D9884CE294DF38B0065DD4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9884CD294DF38B0065DD4F /* ContentView.swift */; };
@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4D3771942980645700E9DDA1 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		4D3771942980645700E9DDA1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		4D562BDC298D9DEF008DFE4C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4D9884C8294DF38B0065DD4F /* Calculator_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9884CB294DF38B0065DD4F /* Calculator_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator_SwiftUIApp.swift; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 				4D9884CB294DF38B0065DD4F /* Calculator_SwiftUIApp.swift */,
 				4D9884CD294DF38B0065DD4F /* ContentView.swift */,
 				4DF7C59E29642D9D0078766F /* Contants.swift */,
-				4D3771942980645700E9DDA1 /* Enum.swift */,
+				4D3771942980645700E9DDA1 /* Enums.swift */,
 				4D562BDC298D9DEF008DFE4C /* Extensions.swift */,
 				4D9884CF294DF38C0065DD4F /* Assets.xcassets */,
 				4D9884D1294DF38C0065DD4F /* Preview Content */,
@@ -149,7 +149,7 @@
 				4D562BDD298D9DEF008DFE4C /* Extensions.swift in Sources */,
 				4D9884CE294DF38B0065DD4F /* ContentView.swift in Sources */,
 				4D9884CC294DF38B0065DD4F /* Calculator_SwiftUIApp.swift in Sources */,
-				4D3771952980645700E9DDA1 /* Enum.swift in Sources */,
+				4D3771952980645700E9DDA1 /* Enums.swift in Sources */,
 				4DF7C59F29642D9D0078766F /* Contants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

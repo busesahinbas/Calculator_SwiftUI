@@ -1,5 +1,5 @@
 //
-//  Enum.swift
+//  Enums.swift
 //  Calculator_SwiftUI
 //
 //  Created by Buse Şahinbaş on 24.01.2023.
@@ -13,4 +13,9 @@ enum Operations {
     case multiply
     case divide
     case none
+}
+
+enum AssetsColor {
+   case darkGrey
+   case ligtGrey
 }
