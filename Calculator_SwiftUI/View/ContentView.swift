@@ -74,19 +74,8 @@ struct ContentView: View {
     
     func calculate(button : ButtonType) {
         manager = 1
-        if(button == .calculate(.divide)){
-            number1 = Double(resultText.editDot())!
-            currentOperation = .divide
-        }else if(button == .calculate(.multiply)){
-            number1 = Double(resultText.editDot())!
-            currentOperation = .multiply
-        }else if(button == .calculate(.subtract)){
-            number1 = Double(resultText.editDot())!
-            currentOperation = .subtract
-        }else if(button == .calculate(.add)){
-            number1 = Double(resultText.editDot())!
-            currentOperation = .add
-        }else if(button == .equal){
+        
+        if(button == .equal){
             switch self.currentOperation {
             case .add: self.result = number1 + result
             case .subtract: self.result = number1 - result
@@ -97,6 +86,18 @@ struct ContentView: View {
             resultText = String(format:"%g",result).removeAfterPointIfZero().editComma()
             number1 = 0
             currentOperation = .none
+        }else {
+            guard let num = Double(resultText.editDot()) else { return }
+            number1 = num
+            if(button == .calculate(.divide)) {
+                currentOperation = .divide
+            }else if(button == .calculate(.multiply)){
+                currentOperation = .multiply
+            }else if(button == .calculate(.subtract)){
+                currentOperation = .subtract
+            }else if(button == .calculate(.add)){
+                currentOperation = .add
+            }
         }
         result = 0
     }
