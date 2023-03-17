@@ -1,6 +1,6 @@
 # Calculator_SwiftUI_2023
 
-A recreation of the iOS calculator app that does basic arithmetic functions written in SwiftUI and MVVM design pattern.
+A recreation of the iOS calculator app that does basic math functions written in SwiftUI and MVVM design pattern.
 
 ## Technologies
 - SwiftUI
