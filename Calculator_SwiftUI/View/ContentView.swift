@@ -28,15 +28,17 @@ struct ContentView: View {
             ForEach (vm.stackArray, id: \.self) { index in
                 HStack {
                     ForEach (index, id: \.self) { i in
-                        Button(i.description) {
+                        Button() {
                             vm.action(for: i)
+                        }label: {
+                            Text(i.description)
+                                .frame(width: i.width, height: Constants.heightButton)
+                                .offset(i == ButtonType.number(.zero) ? CGSize(width: -40.0, height: 0) : CGSize(width: 0, height: 0))
+                                .foregroundColor(i.foregroundColor)
+                                .background(i.backgroundColor)
+                                .clipShape(Capsule())
+                                .font(.system(size: 32))
                         }
-                        .offset(i == ButtonType.number(.zero) ? CGSize(width: -40.0, height: 0) : CGSize(width: 0, height: 0))
-                        .frame(width: i.width, height: Constants.heightButton)
-                        .foregroundColor(i.foregroundColor)
-                        .background(i.backgroundColor)
-                        .clipShape(Capsule())
-                        .font(.system(size: 32))
                     }
                 }
             }

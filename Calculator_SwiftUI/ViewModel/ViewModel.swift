@@ -37,14 +37,14 @@ final class ViewModel: ObservableObject {
       }
       
 
-    func numbers(button : String){
+    func numbers(button : String) {
         if manager == 1 {
             resultText = button
             manager = 0
-        }else{
+        }else {
             if (resultText.contains("0,")) {
                 resultText += button
-            }else if(resultText == "0"){
+            }else if(resultText == "0") {
                 resultText = button
             }else{
                 resultText = resultText + button
@@ -60,13 +60,17 @@ final class ViewModel: ObservableObject {
     }
 
     func operations(button : ButtonType) {
-        if(button == .operation(.AC)){
+        if(button == .operation(.AC)) {
             result = 0
             number1 = 0
             resultText = "0"
         }else if (button == .operation(.sign)) {
             result = Double(resultText.editDot())! * -1
-            resultText = String(result).removeAfterPointIfZero().editComma()
+            if(result == 0) {
+                resultText = "0"
+            }else {
+                resultText = String(result).removeAfterPointIfZero().editComma()
+            }
         }else if(button == .operation(.percent)) {
             result = Double(resultText.editDot())! / 100.0
             resultText = String(format:"%g",result).editComma()
@@ -75,8 +79,7 @@ final class ViewModel: ObservableObject {
 
     func calculate(button : ButtonType) {
         manager = 1
-        
-        if(button == .equal){
+        if(button == .equal) {
             switch self.currentOperation {
             case .add: self.result = number1 + result
             case .subtract: self.result = number1 - result
@@ -92,9 +95,9 @@ final class ViewModel: ObservableObject {
             number1 = num
             if(button == .calculate(.divide)) {
                 currentOperation = .divide
-            }else if(button == .calculate(.multiply)){
+            }else if(button == .calculate(.multiply)) {
                 currentOperation = .multiply
-            }else if(button == .calculate(.subtract)){
+            }else if(button == .calculate(.subtract)) {
                 currentOperation = .subtract
             }else if(button == .calculate(.add)){
                 currentOperation = .add
